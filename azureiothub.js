@@ -148,7 +148,7 @@ module.exports = function (RED) {
             //Creating connectionString
             //Sample
             //HostName=sample.azure-devices.net;DeviceId=sampleDevice;SharedAccessKey=wddU//P8fdfbSBDbIdghZAoSSS5gPhIZREhy3Zcv0JU=
-            newConnectionString = "HostName=" + node.credentials.hostname + ";DeviceId=" + messageJSON.deviceId + ";SharedAccessKey=" + messageJSON.key
+            newConnectionString = "HostName=" + node.credentials.hostname + ";DeviceId=" + messageJSON.deviceId + ";SharedAccessKey=" + messageJSON.key;
 	    if( typeof messageJSON.protocol !== 'undefined'){
             	newProtocol = messageJSON.protocol;
 	    } else {
@@ -265,10 +265,10 @@ module.exports = function (RED) {
 
         setStatus(node, statusEnum.disconnected);
 
-        connectToEventHub( this, node.credentials.connectionString );
+        connectToEventHub( node, node.credentials.connectionString );
 
         node.on('close', function() {
-            disconnectFromEventHub(node);
+            disconnectFromEventHub(node, this);
         });
     }
 

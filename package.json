@@ -35,6 +35,16 @@
     "url": "http://nodered.org"
   },
   "contributors": [
-    "Olli Kasari <8488349+kasarol@users.noreply.github.com>"
-  ]
+    "Olli Kasari <8488349+kasarol@users.noreply.github.com>",
+    "Rajasa Savant rasavant-ms@github.com"
+  ],
+  "devDependencies": {
+    "express": "^4.16.3",
+    "node-red": "^0.18.4",
+    "node-red-node-test-helper": "^0.1.5",
+    "red": "0.0.0"
+  },
+  "scripts": {
+    "test": "mocha \"test/**/*_spec.js\""
+  }
 }
