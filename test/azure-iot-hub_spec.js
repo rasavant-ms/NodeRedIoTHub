@@ -1,5 +1,4 @@
 var should = require("should");
-//var assert = require("assert");
 var helper = require("node-red-node-test-helper");
 var azureiothub = require("../azureiothub.js");
 
@@ -50,15 +49,11 @@ describe('AzureIoTHubNode Node', function () {
   it('azureiothub should receive input', function (done) {
     var flow = [
         {id:"azIotNode",type:"azureiothub",name:"Azure IoT Hub",protocol:"amqp",credentials: "{hostname:'hostname'}",wires:[["h1"]]},
-        // {"id":"i1","type":"inject","name":"","topic":"",
-        // "payload":"{'deviceId': 'device146', 'key': 'xxx','protocol': 'http', 'data': '{tem: 25, wind: 20}' }",
-        // "payloadType":"json","repeat":"","crontab":"","once":false,"x":408,"y":755,"wires":[["azIotNode"]]},
         {id:"h1",type:"helper"}
       ];
     
     helper.load(azureiothub, flow, function() {
       var azIoTNode = helper.getNode('azIoTNode');
-      //var inputNode = helper.getNode('i1');
       var helperNode = helper.getNode('h1');
 
       
@@ -75,20 +70,4 @@ describe('AzureIoTHubNode Node', function () {
      
     });
   });
-  
-  // it('should make payload lower case', function (done) {
-  //   var flow = [
-  //     { id: "n1", type: "lower-case", name: "lower-case",wires:[["n2"]] },
-  //     { id: "n2", type: "helper" }
-  //   ];
-  //   helper.load(azureIotHubNode, flow, function () {
-  //     var n2 = helper.getNode("n2");
-  //     var n1 = helper.getNode("n1");
-  //     n2.on("input", function (msg) {
-  //       msg.should.have.property('payload', 'uppercase');
-  //       done();
-  //     });
-  //     n1.receive({ payload: "UpperCase" });
-  //   });
-  // });
 });
